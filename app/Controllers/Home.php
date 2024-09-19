@@ -2,12 +2,25 @@
 
 namespace App\Controllers;
 use App\Models\Mahasiswa_model;
+use Config\View;
 
 class Home extends BaseController
 {
-    public function index(): string
+    public function index()
+    {   
+        echo View('Admin_header');
+        echo View('Admin_nav');
+        echo View('Home');
+        echo View('Admin_footer');
+        // return view('input_mhs');
+    }
+
+    public function forminputmhs()
     {
-        return view('input_mhs');
+        echo View('Admin_header');
+        echo View('Admin_nav');
+        echo View('Input_mhs');
+        echo View('Admin_footer');
     }
 
     public function simpanmhs()
@@ -34,7 +47,10 @@ class Home extends BaseController
         $mhs = new Mahasiswa_model();
         $datamhs = $mhs->tampildata();
         $data = array('dataMhs' => $datamhs);
+        echo View('Admin_header');
+        echo View('Admin_nav');
         echo View('Viewmhs', $data);
+        echo View('Admin_footer');
     }
 
     public function formeditmhs($id)
